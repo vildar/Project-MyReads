@@ -9,10 +9,6 @@ class ListBooksContent extends Component{
         read: PropTypes.array.isRequired
     }
 
-    // changeCategory = (book, bookCategory) => {
-    //     BooksAPI.update(book, bookCategory);
-    // }
-
     bookGrid = (category, title) => {
         return (
             <div className="bookshelf">
@@ -28,16 +24,18 @@ class ListBooksContent extends Component{
                                 />
                             )
                         } */}
-                        {category.map((book) =>
-                            <BookShelf
-                                key = {book.industryIdentifiers[0].identifier}
-                                // bookTitle = {book.title}
-                                // imageURL = {book.imageLinks.thumbnail}
-                                // authors =   {book.authors}
-                                // bookCategory = {book.shelf}
-                                // onChangeCategory = {this.changeCategory(book,"")}
-                                book = {book}
-                            />)
+                        {
+                            category.map((book) =>
+                                <BookShelf
+                                    key = {book.industryIdentifiers[0].identifier}
+                                    // bookTitle = {book.title}
+                                    // imageURL = {book.imageLinks.thumbnail}
+                                    // authors =   {book.authors}
+                                    // bookCategory = {book.shelf}
+                                    // onChangeCategory = {this.changeCategory(book,"")}
+                                    book = {book}
+                                />
+                            )
                         }
                     </ol>
                 </div>
