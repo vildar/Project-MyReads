@@ -23,9 +23,14 @@ class SearchBooks extends Component{
             })
         } else{
             this.setState(() => ({
+                query: '',
                 books: []
             }))
         }
+    }
+
+    changeCategory(book, shelf){
+        BooksAPI.update(book, shelf)
     }
 
     errorCheck = () => {
@@ -33,6 +38,7 @@ class SearchBooks extends Component{
             return this.state.books.map((book) =>
                 <BookShelf
                     key = {book.industryIdentifiers[0].identifier}
+                    changeCategory = {this.changeCategory.bind(this)}
                     book = {book}
                 />
             )
@@ -52,7 +58,6 @@ class SearchBooks extends Component{
                         <input 
                             type = "text" 
                             placeholder = "Search by title or author"
-                            // value = {this.state.query}
                             onChange = {(event) => this.updateQuery(event.target.value)}
                         />
                     </div>

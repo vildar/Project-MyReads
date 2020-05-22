@@ -12,7 +12,7 @@ class ListBooks extends Component{
       read: []
     }
 
-    componentDidMount(){
+    updateState(){
       BooksAPI.getAll()
         .then((books) => {
           this.setState(() => ({
@@ -23,12 +23,21 @@ class ListBooks extends Component{
         })
     }
 
+    componentDidMount(){
+      this.updateState()
+    }
+
+    changeCategory(book, shelf){
+      BooksAPI.update(book, shelf).then(() => this.updateState())
+    }
+
     render(){
         return (
           <div className="list-books">
             <ListBooksTitle />
             
             <ListBooksContent 
+              changeCategory = {this.changeCategory.bind(this)}
               currentlyReading = {this.state.currentlyReading}
               wantToRead = {this.state.wantToRead}
               read = {this.state.read}
