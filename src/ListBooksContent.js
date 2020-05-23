@@ -7,7 +7,7 @@ class ListBooksContent extends Component{
         changeCategory: PropTypes.func.isRequired,
         currentlyReading: PropTypes.array.isRequired,
         wantToRead: PropTypes.array.isRequired,
-        read: PropTypes.array.isRequired
+        read: PropTypes.array.isRequired,
     }
 
     bookGrid = (category, title) => {
@@ -22,6 +22,7 @@ class ListBooksContent extends Component{
                                     key = {book.industryIdentifiers[0].identifier}
                                     changeCategory = {this.props.changeCategory.bind(this)}
                                     book = {book}
+                                    books = {category}
                                 />
                             )
                         }

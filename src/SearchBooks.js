@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './BookShelf'
+import PropTypes from 'prop-types'
 
 class SearchBooks extends Component{
     state = {
         query: "",
         books: []
+    }
+
+    static propTypes = {
+        bookList: PropTypes.array.isRequired
     }
 
     updateQuery = (query) => {
@@ -31,6 +36,7 @@ class SearchBooks extends Component{
 
     changeCategory(book, shelf){
         BooksAPI.update(book, shelf)
+            .then(BooksAPI.get(book.id).shelf = shelf)
     }
 
     errorCheck = () => {
@@ -40,6 +46,7 @@ class SearchBooks extends Component{
                     key = {book.industryIdentifiers[0].identifier}
                     changeCategory = {this.changeCategory.bind(this)}
                     book = {book}
+                    books = {this.props.bookList}
                 />
             )
         } 

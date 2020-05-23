@@ -41,6 +41,7 @@ class ListBooks extends Component{
               currentlyReading = {this.state.currentlyReading}
               wantToRead = {this.state.wantToRead}
               read = {this.state.read}
+              books = {this.props.books}
             />
             
             <div className="open-search">
